@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import WinePal
 
 
-class ProfileSerializer(serializers.ModelSerializer):
+class WinepalSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
 
@@ -11,8 +11,8 @@ class ProfileSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     class Meta:
-        model = Profile
+        model = WinePal
         fields = [
-            'id', 'owner', 'created_on', 'updated_on', 'name',
-            'content', 'image', 'is_owner',
+            'id', 'user', 'created_on', 'updated_on', 'name',
+            'bio', 'img', 'is_owner',
         ]

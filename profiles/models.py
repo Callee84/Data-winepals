@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class WinePal(models.Model):
     # model for creating a profile
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=255, blank=True)
@@ -23,7 +23,7 @@ class WinePal(models.Model):
 
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        WinePal.objects.create(user=instance)
+        WinePal.objects.create(owner=instance)
 
 
 post_save.connect(create_profile, sender=User)
