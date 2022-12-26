@@ -20,4 +20,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('profiles.urls')),
     path('', include('posts.urls')),
+    path('', include('likes.urls')),
+    path('', include('wine.urls')),
+    path('', include('follow.urls')),
+    path('', include('comments.urls')),
 ]
